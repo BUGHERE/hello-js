@@ -7,8 +7,9 @@ app.get('/server', (request, response)=>{
   response.send('hello ajax get')
 })
 
-app.post('/server', (request, response)=>{
+app.all('/server', (request, response)=>{
   response.setHeader('Access-Control-Allow-Origin', '*')
+  response.setHeader('Access-Control-Allow-Headers', '*')
   response.send('hello ajax post')
 })
 
