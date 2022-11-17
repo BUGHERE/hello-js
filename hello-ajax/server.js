@@ -4,13 +4,17 @@ const app = express()
 
 app.get('/server', (request, response)=>{
   response.setHeader('Access-Control-Allow-Origin', '*')
-  response.send('hello ajax get')
+  response.send('hello ajax')
 })
 
-app.all('/server', (request, response)=>{
+app.all('/json-server', (request, response)=>{
   response.setHeader('Access-Control-Allow-Origin', '*')
   response.setHeader('Access-Control-Allow-Headers', '*')
-  response.send('hello ajax post')
+  const data = {
+    name: 'atguigu'
+  }
+  let str = JSON.stringify(data)
+  response.send(str)
 })
 
 app.listen(8000, ()=>{
