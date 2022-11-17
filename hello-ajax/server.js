@@ -4,12 +4,12 @@ const express = require('express')
 
 const app = express()
 
-app.get('/server', (request, response)=>{
+app.get('/server', (request, response) => {
   response.setHeader('Access-Control-Allow-Origin', '*')
   response.send('hello ajax')
 })
 
-app.all('/json-server', (request, response)=>{
+app.all('/json-server', (request, response) => {
   response.setHeader('Access-Control-Allow-Origin', '*')
   response.setHeader('Access-Control-Allow-Headers', '*')
   const data = {
@@ -19,13 +19,23 @@ app.all('/json-server', (request, response)=>{
   response.send(str)
 })
 
-app.get('/delay', (request, response)=>{
+app.get('/delay', (request, response) => {
   response.setHeader('Access-Control-Allow-Origin', '*')
-  setTimeout(()=>{
+  setTimeout(() => {
     response.send('delay');
   }, 3000)
 })
 
-app.listen(8000, ()=>{
+app.all('/jquery-server', (request, response) => {
+  response.setHeader('Access-Control-Allow-Origin', '*')
+  response.setHeader('Access-Control-Allow-Headers', '*')
+  const data = {
+    name: 'hello'
+  }
+  response.send(JSON.stringify(data));
+})
+
+
+app.listen(8000, () => {
   console.log("8000 listening")
 })
