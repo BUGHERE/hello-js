@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>AJAX</title>
+  <style>
+    #result {
+      width: 200px;
+      height: 100px;
+      border: solid 1px #903;
+    }
+  </style>
+</head>
+<body>
+<button>send</button>
+<div id="result"></div>
+<script>
+  const btn = document.getElementsByTagName('button')[0]
+  const res = document.getElementById('result')
+  btn.onclick = function () {
+    const xhr = new XMLHttpRequest()
+    xhr.timeout = 2000
+    xhr.ontimeout = function () {
+      alert('timeout')
+    }
+    xhr.onerror = function () {
+      alert('network error')
+    }
+    xhr.open('GET', 'http://localhost:8000/delay')
+    xhr.send()
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {  // get all data
+        if (xhr.status >= 200 && xhr.status < 300) {  // status code
+          res.innerHTML = xhr.response
+        }
+      }
+    }
+  }
+</script>
+</body>
+</html>

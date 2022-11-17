@@ -19,6 +19,13 @@ app.all('/json-server', (request, response)=>{
   response.send(str)
 })
 
+app.get('/delay', (request, response)=>{
+  response.setHeader('Access-Control-Allow-Origin', '*')
+  setTimeout(()=>{
+    response.send('delay');
+  }, 3000)
+})
+
 app.listen(8000, ()=>{
   console.log("8000 listening")
 })
