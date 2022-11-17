@@ -1,3 +1,5 @@
+// npx nodemon server.js运行
+
 const express = require('express')
 
 const app = express()
@@ -11,7 +13,7 @@ app.all('/json-server', (request, response)=>{
   response.setHeader('Access-Control-Allow-Origin', '*')
   response.setHeader('Access-Control-Allow-Headers', '*')
   const data = {
-    name: 'atguigu'
+    name: 'hello'
   }
   let str = JSON.stringify(data)
   response.send(str)
