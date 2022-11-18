@@ -35,6 +35,15 @@ app.all('/jquery-server', (request, response) => {
   response.send(JSON.stringify(data));
 })
 
+app.all('/axios-server', (request, response) => {
+  response.setHeader('Access-Control-Allow-Origin', '*')
+  response.setHeader('Access-Control-Allow-Headers', '*')
+  const data = {
+    name: 'hello'
+  }
+  response.send(JSON.stringify(data));
+})
+
 
 app.listen(8000, () => {
   console.log("8000 listening")
