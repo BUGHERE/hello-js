@@ -44,6 +44,24 @@ app.all('/axios-server', (request, response) => {
   response.send(JSON.stringify(data));
 })
 
+app.all('/jsonp-server', (request, response)=>{
+  const data = {
+    exist: 1,
+    msg: 'existed'
+  }
+  let str= JSON.stringify(data)
+  response.end(`handle(${str})`)
+})
+
+app.all('/jquery-jsonp-server', (request, response)=>{
+  const data = {
+    name: 'hello',
+    city: ['1', '2', '3']
+  }
+  let str= JSON.stringify(data)
+  let cb = request.query.callback
+  response.end(`${cb}(${str})`)
+})
 
 app.listen(8000, () => {
   console.log("8000 listening")

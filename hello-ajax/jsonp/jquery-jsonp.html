@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>jquery-jsonp</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body>
+  <button>send jsonp request</button>
+  <div id="result"></div>
+  <script>
+    $('button').eq(0).click(function (){
+      $.getJSON('http://localhost:8000/jquery-jsonp-server?callback=?', function (data){
+        $('#result').html(`
+          name: ${data.name},
+          city: ${data.city}
+        `)
+      })
+    })
+  </script>
+</body>
+</html>

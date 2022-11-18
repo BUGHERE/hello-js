@@ -1,0 +1,29 @@
+<!--用script解决跨域问题，要求服务端返回js代码-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>jsonp</title>
+</head>
+<body>
+  username: <input type="text" id="username">
+  <p></p>
+  <script>
+    const input = document.querySelector('input')
+    const p = document.querySelector('p')
+    function handle(data) {
+      input.style.border = "solid 1px #f00";
+      p.innerHTML = data.msg;
+    }
+    input.onblur = function () {
+      let username = this.value
+      const script = document.createElement('script')
+      script.src = 'http://localhost:8000/jsonp-server'
+      document.body.appendChild(script)
+    }
+  </script>
+</body>
+</html>
