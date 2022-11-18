@@ -63,6 +63,11 @@ app.all('/jquery-jsonp-server', (request, response)=>{
   response.end(`${cb}(${str})`)
 })
 
+app.all('/cors-server', (request, response) => {
+  response.setHeader('Access-Control-Allow-Origin', '*')
+  response.send('hello cors')
+})
+
 app.listen(8000, () => {
   console.log("8000 listening")
 })
