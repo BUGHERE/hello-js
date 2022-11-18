@@ -42,6 +42,28 @@
         }
       })
     }
+    btns[2].onclick = function () {
+      axios({
+        method: 'POST',
+        url: '/axios-server',
+        params: {
+          id: 300,
+          vip: 11
+        },
+        headers: {
+          name: 'hello'
+        },
+        data: {
+          username: 'admin',
+          password: 'admin'
+        }
+      }).then(response=>{
+        console.log(response.status)
+        console.log(response.statusText)
+        console.log(response.headers)
+        console.log(response.data)
+      })
+    }
   </script>
 </body>
 </html>
