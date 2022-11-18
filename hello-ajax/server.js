@@ -53,7 +53,7 @@ app.all('/jsonp-server', (request, response)=>{
   response.end(`handle(${str})`)
 })
 
-app.all('/jquery-jsonp-server', (request, response)=>{
+app.all('/jsonp-jquery-server', (request, response)=>{
   const data = {
     name: 'hello',
     city: ['1', '2', '3']

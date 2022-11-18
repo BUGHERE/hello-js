@@ -13,7 +13,7 @@
   <div id="result"></div>
   <script>
     $('button').eq(0).click(function (){
-      $.getJSON('http://localhost:8000/jquery-jsonp-server?callback=?', function (data){
+      $.getJSON('http://localhost:8000/jsonp-jquery-server?callback=?', function (data){
         $('#result').html(`
           name: ${data.name},
           city: ${data.city}
